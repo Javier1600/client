@@ -9,6 +9,7 @@ const New = () =>{
     const [creationStatus, setCreationStatus] = useState("");
     var error = false;
     const navigate = useNavigate();
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
         axios.post('http://127.0.0.1:8000/api/author/new', {authorName})
@@ -28,6 +29,7 @@ const New = () =>{
                 ValidateError()
             });
     }
+
     const ValidateError = () => {
         if(error){
             document.getElementById('error').style.color = 'red'
@@ -44,12 +46,11 @@ const New = () =>{
             <p>Add a new author</p>
             <form onSubmit={onSubmitHandler}>
                 <label htmlFor="authorName">Name:</label> <br/>
-                <input type="text" name="authorName" onChange={(e)=>{setAuthorName(e.target.value)}}/><br/><br/>
+                <input type="text" name="authorName" onChange={e=>setAuthorName(e.target.value)}/><br/><br/>
                 <button onClick={e =>{navigate("/")}}>Cancel</button> <input className="button" type="submit" value="Submit"/>
             </form>
             <label id="error"></label>
         </div>
-        
     )
 }
 
