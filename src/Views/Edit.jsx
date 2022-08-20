@@ -41,22 +41,6 @@ const Edit = () =>{
             }
             
         }
-        axios.put(`http://127.0.0.1:8000/api/author/${id}`, {authorName})
-        .then(res => {
-            console.log(res)
-                setAuthorError("");
-                setCreationStatus("Author has been successfully updated")
-            
-        })
-        .catch(err => {
-            const errorResponse = err.response.data.errors;
-            if (Object.keys(errorResponse).includes('authorName')){
-                setAuthorError(errorResponse['authorName'].message);
-            }else{
-                
-                setAuthorError("");
-            }            
-        });
     }
 
     
