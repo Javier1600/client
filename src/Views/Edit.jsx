@@ -9,42 +9,41 @@ const Edit = () =>{
     const {id} = useParams()
     const [authorError, setAuthorError] = useState("");
     const [creationStatus, setCreationStatus] = useState("");
-    var [error, setError] = useState();
 
     useEffect(()=>{
         axios.get(`http://127.0.0.1:8000/api/author/${id}`)
         .then(res =>{
             setAuthorName(res.data.authorName)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+             
+        })
     },[id])
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        axios.put(`http://127.0.0.1:8000/api/author/${id}`, {authorName})
-        .then(res => {
-            setError(false);
-            setCreationStatus(res.data.msg)
-        })
-        .catch(err => {
-            const errorResponse = err.response.data.errors;
-            setError(true);
-            setAuthorError(errorResponse)
-            console.log(errorResponse)
-        });
-        ValidateError()
-    }
-
-    const ValidateError = () => {
-        if(error){
-            document.getElementById('error').style.color = 'red'
-            document.getElementById('error').innerText = authorError['authorName']['message']
+        if(authorName.length>=3){
+            axios.put(`http://127.0.0.1:8000/api/author/${id}`, {authorName})
+            .then(res => {
+                console.log(res)
+                setAuthorError("");
+                setCreationStatus("Author has been successfully updated")
+            
+             })
         }else{
-            document.getElementById('error').style.color = 'green'
-            document.getElementById('error').innerText = creationStatus
+            if(authorName.length===0){
+                setAuthorError("Error updating: Authors name is mandatory");
+                setCreationStatus("");
+            }else{
+                setAuthorError("Error updating: Authors name must be at least 3 chars");
+                setCreationStatus("");
+            }
+            
         }
     }
 
+    
     return(
         <div className="container">
             <h1>Favorite Authors</h1>
@@ -53,10 +52,11 @@ const Edit = () =>{
             <div  className="container" >
                 <form onSubmit={onSubmitHandler}>
                     <label htmlFor="authorName">Name: </label> <br/>
-                    <input type="text" name="authorName" value={authorName} onChange={(e)=>{setAuthorName(e.target.value)}}/><br/><br/>
-                    <button onClick={e =>{navigate("/")}}>Cancel</button> <input className="button" type="submit" value="Submit"/>
+                    <input type="text" name="authorName" onChange={(e)=>{setAuthorName(e.target.value)}} value={authorName}/><br/><br/>
+                    <p id="error">{authorError}</p>
+                    <button onClick={e =>{navigate("/")}}>Cancel</button> <input className="button" type="submit" value="Submit"/><br/>
+                    <label id="valido">{creationStatus}</label>
                 </form>
-                <label id="error"></label>
             </div>
             
         </div>
