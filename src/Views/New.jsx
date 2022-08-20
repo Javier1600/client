@@ -35,13 +35,15 @@ const New = () =>{
         <div className="container">
             <h1>Favorite Authors</h1>
             <Link to={"/"}>Home</Link>
-            <p>Add a new author</p>
-            <form onSubmit={onSubmitHandler}>
-                <label htmlFor="authorName">Name:</label> <br/>
-                <input type="text" name="authorName" onChange={e=>setAuthorName(e.target.value)} value={authorName}/><br/><br/>
-                <p id="error">{authorError}</p>
-                <button onClick={e =>{navigate("/")}}>Cancel</button> <input className="button" type="submit" value="Submit"/><br/>
-                <label id="valido">{creationStatus}</label>
+            <p id="purpura">Add a new author</p>
+            <form onSubmit={onSubmitHandler} className="info">
+                <div id="conteninfo">
+                    <label htmlFor="authorName">Name:</label> <br/>
+                    <input type="text" name="authorName" onChange={e=>setAuthorName(e.target.value)} value={authorName}/><br/><br/>
+                    <p id="error">{authorError}</p>
+                    <button  className="btn btn-primary" onClick={e =>{navigate("/")}}>Cancel</button> <input  className="btn btn-primary" type="submit" value="Submit"/><br/>
+                    <label id="valido">{creationStatus}</label>
+                </div>
             </form>
         </div>
     )

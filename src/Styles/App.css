@@ -42,3 +42,14 @@
 #valido{
   color: green;
 }
+.info{
+  border: solid 1px gray;
+  width: 25%; 
+}
+#conteninfo{
+  margin-top: 25px;
+  margin-left: 25px;
+}
+#purpura{
+  color: #800080;
+}

@@ -25,8 +25,8 @@ const AuthorList = (props) => {
                         (author,ind) => {
                             return (
                                 <tr key={ind}>
-                                    <td>{author.authorName}</td>
-                                    <td className="buttons"><button onClick={e =>{navigate(`/edit/${author._id}`)}}>Edit</button> <button onClick={(e)=>{DeleteAuthor(author._id)}}>Delete</button> </td>
+                                    <td id="purpura">{author.authorName}</td>
+                                    <td className="buttons"><button  className="btn btn-secondary" onClick={e =>{navigate(`/edit/${author._id}`)}}>Edit</button> <button   className="btn btn-secondary" onClick={(e)=>{DeleteAuthor(author._id)}}>Delete</button> </td>
                                 </tr>
                             )
                         })

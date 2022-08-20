@@ -21,7 +21,7 @@ const Main = () => {
         <div className="container">
             <h1>Favorite Authors</h1>
             <Link to={"/new"}>Add a new author</Link>
-            <p>We have quotes by:</p>
+            <p id="purpura">We have quotes by:</p>
             <AuthorList authors = {authors.sort()} RemoveFromDom = {RemoveFromDom} />
         </div>
     );
