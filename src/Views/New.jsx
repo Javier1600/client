@@ -9,6 +9,10 @@ const New = () =>{
     const [creationStatus, setCreationStatus] = useState("");
     const navigate = useNavigate();
 
+    const GoToHome = () => {
+        navigate('/')
+    }
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
         axios.post(`http://127.0.0.1:8000/api/author/new`, {authorName})
@@ -17,6 +21,7 @@ const New = () =>{
                 console.log("Succesfully created",res)
                 setAuthorError("")
                 setCreationStatus("Author has been successfully created")
+                setTimeout(GoToHome,1000)
             })
             .catch(err => {
 
@@ -41,7 +46,7 @@ const New = () =>{
                     <label htmlFor="authorName">Name:</label> <br/>
                     <input type="text" name="authorName" onChange={e=>setAuthorName(e.target.value)} value={authorName}/><br/><br/>
                     <p id="error">{authorError}</p>
-                    <button  className="btn btn-primary" onClick={e =>{navigate("/")}}>Cancel</button> <input  className="btn btn-primary" type="submit" value="Submit"/><br/>
+                    <button  className="btn btn-primary" onClick={e =>{GoToHome()}}>Cancel</button> <input  className="btn btn-primary" type="submit" value="Submit"/><br/>
                     <label id="valido">{creationStatus}</label>
                 </div>
             </form>

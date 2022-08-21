@@ -20,7 +20,9 @@ const Edit = () =>{
              
         })
     },[id])
-
+    const GoToHome = () => {
+        navigate('/')
+    }
     const onSubmitHandler = (e) => {
         e.preventDefault();
         if(authorName.length>=3){
@@ -29,7 +31,7 @@ const Edit = () =>{
                 console.log(res)
                 setAuthorError("");
                 setCreationStatus("Author has been successfully updated")
-            
+                setTimeout(GoToHome,1000)
              })
         }else{
             if(authorName.length===0){
@@ -43,7 +45,6 @@ const Edit = () =>{
         }
     }
 
-    
     return(
         <div className="container">
             <h1>Favorite Authors</h1>
@@ -55,7 +56,7 @@ const Edit = () =>{
                     <label htmlFor="authorName">Name: </label> <br/>
                     <input type="text" name="authorName" onChange={(e)=>{setAuthorName(e.target.value)}} value={authorName}/><br/><br/>
                     <p id="error">{authorError}</p>
-                    <button className="btn btn-primary" onClick={e =>{navigate("/")}}>Cancel</button> <input   className="btn btn-primary" type="submit" value="Submit"/><br/>
+                    <button className="btn btn-primary" onClick={e =>{GoToHome()}}>Cancel</button> <input className="btn btn-primary" type="submit" value="Submit"/><br/>
                     <label id="valido">{creationStatus}</label>
                   </div>
                 </form>
