@@ -17,7 +17,6 @@ const Edit = () =>{
         })
         .catch(err => {
             console.log(err)
-             
         })
     },[id])
     const GoToHome = () => {
@@ -50,6 +49,9 @@ const Edit = () =>{
             <h1>Favorite Authors</h1>
             <Link to={"/"}>Home</Link>
             <p id="purpura">Edit this author</p>
+            {
+                authorName==null ? <p id="error">Oops! We Could not find the author you are looking for. <Link to={'/new'}>Clic here to add it</Link></p>:<p></p>
+            }
             <div  className="container" >
                 <form onSubmit={onSubmitHandler} className="info">
                    <div id="conteninfo">
