@@ -19,6 +19,7 @@ const Edit = () =>{
             console.log(err)
         })
     },[id])
+    
     const GoToHome = () => {
         navigate('/')
     }
@@ -63,7 +64,6 @@ const Edit = () =>{
                   </div>
                 </form>
             </div>
-            
         </div>
         
     )
