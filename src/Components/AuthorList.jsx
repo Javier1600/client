@@ -26,7 +26,7 @@ const AuthorList = (props) => {
                             return (
                                 <tr key={ind}>
                                     <td id="purpura">{author.authorName}</td>
-                                    <td className="buttons"><button  className="btn btn-secondary" onClick={e =>{navigate(`/edit/${author._id}`)}}>Edit</button> <button   className="btn btn-secondary" onClick={(e)=>{DeleteAuthor(author._id)}}>Delete</button> </td>
+                                    <td className="buttons"><button  className="btn btn-secondary" onClick={e =>{navigate(`/edit/${author._id}`)}}>Edit</button> <button className="btn btn-secondary" onClick={(e)=>{let resp= window.confirm("estas seguro que quieres borrar a "+ author.authorName); resp ? DeleteAuthor(author._id) : console.log("")}}>Delete</button> </td>
                                 </tr>
                             )
                         })
