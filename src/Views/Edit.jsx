@@ -23,6 +23,7 @@ const Edit = () =>{
     const GoToHome = () => {
         navigate('/')
     }
+    
     const onSubmitHandler = (e) => {
         e.preventDefault();
         if(authorName.length>=3){
