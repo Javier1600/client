@@ -1,8 +1,9 @@
 import './Styles/App.css';
 import {BrowserRouter,Route, Routes} from "react-router-dom"
 import Main from './Views/Main';
+import PirateList from './Components/PirateList';
+import Detail from './Views/detail';
 import New from './Views/New';
-import Edit from './Views/Edit';
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main/>}/>
-          <Route path="/new" element={<New/>}/>
-          <Route exact path="/edit/:id" element={<Edit/>}/>
+          <Route path="/pirates" element={<PirateList/>}/>
+          <Route path="/pirate/:id" element={<Detail/>}/>
+          <Route path="/pirate/new/" element={<New/>}/>
         </Routes>
       </BrowserRouter>
     </div>
